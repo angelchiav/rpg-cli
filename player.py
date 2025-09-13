@@ -35,7 +35,13 @@ class Player:
 
     def naming(self):
         name = input("Name your hero: ")
-        self.set_name(name)
+        print(f"You confirm that you want {name} as name?")
+        response = input("> Y/N: ")
+        if response.upper() == "Y":
+            self.__name = name
+            print(f"Your name has been changed succesfully to {name}")
+        else:
+            self.naming()
     
     def set_money(self, value):
         if value < 0:
@@ -85,6 +91,19 @@ class Player:
 
     def level_up(self):
         self.__level += 1
+    
+    def stats(self):
+        print(f"""
+- NAME: {self.__name}
+- HEALTH: {self.__health}
+- LEVEL: {self.__level}
+- STRENGTH: {self.__strength}
+- DEFENSE: {self.__defense}
+- MANA: {self.__mana}
+- XP: {self.__xp}
+
+        """
+        )
     
     def become_warrior(self):
         self.__health = 100
