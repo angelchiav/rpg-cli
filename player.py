@@ -8,6 +8,7 @@ class Player:
         self.__xp = xp
         self.__level = level
         self.__inventory = []
+        self.__name = ""
 
     def get_money(self):
         return self.__money
@@ -26,6 +27,15 @@ class Player:
     
     def get_xp(self):
         return self.__xp
+    
+    def set_name(self, value):
+        if not value.isalpha():
+            raise Exception("The name needs to be just in letters")
+        self.__name = value
+
+    def naming(self):
+        name = input("Name your hero: ")
+        self.set_name(name)
     
     def set_money(self, value):
         if value < 0:
@@ -102,4 +112,6 @@ class Player:
         self.__mana = 15
         self.__xp = 0
         self.__inventory = ['WOODEN WAND']
-    
+
+player = Player()
+player.naming()
